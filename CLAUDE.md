@@ -9,6 +9,7 @@ AI Paywall is a universal Python module that enables content creators to charge 
 ## Development Philosophy
 
 ### Core Principles
+
 - **Universal compatibility**: Must work with Django, Flask, FastAPI, and any Python web framework
 - **Zero-config default**: Should work out of the box with sensible defaults
 - **Progressive enhancement**: Start simple, add features as needed
@@ -16,6 +17,7 @@ AI Paywall is a universal Python module that enables content creators to charge 
 - **Privacy-first**: Minimal data collection, respect human privacy
 
 ### Code Quality Standards
+
 - **Simplicity over cleverness**: Prefer readable code over optimized code
 - **Comprehensive testing**: Every public method needs tests
 - **Documentation-driven**: Write docs first, then implement
@@ -49,6 +51,7 @@ ai-paywall/
 ## Development Commands
 
 ### Environment Setup
+
 ```bash
 # Development environment
 python -m venv venv
@@ -68,6 +71,7 @@ mypy ai_paywall
 ```
 
 ### Packaging
+
 ```bash
 # Build package
 python -m build
@@ -82,7 +86,9 @@ python -m twine upload dist/*
 ## API Design Guidelines
 
 ### Public API
+
 Keep the public API minimal and stable:
+
 ```python
 # These should rarely change
 from ai_paywall import AIPaywall, DetectionResult
@@ -92,16 +98,20 @@ result = paywall.check(request)
 ```
 
 ### Request Adaptation
+
 The `RequestAdapter` should handle differences between frameworks transparently:
+
 ```python
 # Should work the same regardless of framework
 result = paywall.check(django_request)
-result = paywall.check(flask_request) 
+result = paywall.check(flask_request)
 result = paywall.check(fastapi_request)
 ```
 
 ### Storage Interface
+
 Storage backends should be pluggable:
+
 ```python
 # All storage backends implement the same interface
 storage = MemoryStorage()
@@ -112,6 +122,7 @@ storage = RedisStorage('redis://localhost')
 ## Testing Strategy
 
 ### Test Categories
+
 1. **Unit tests**: Individual functions and classes
 2. **Integration tests**: Framework adapters with mock requests
 3. **End-to-end tests**: Full workflow from detection to payment
@@ -119,7 +130,9 @@ storage = RedisStorage('redis://localhost')
 5. **Security tests**: Validate input sanitization
 
 ### Test Data
+
 Create realistic test scenarios:
+
 - Known bot user agents
 - Human browser user agents
 - Edge cases and malformed requests
@@ -128,12 +141,14 @@ Create realistic test scenarios:
 ## Bot Detection Patterns
 
 ### Pattern Management
+
 - Keep patterns in `patterns.py` as structured data
 - Include metadata: company, description, confidence level
 - Support regular expressions and exact matches
 - Allow easy updates from community contributions
 
 ### Pattern Format
+
 ```python
 PATTERNS = {
     'openai': {
@@ -149,6 +164,7 @@ PATTERNS = {
 ## Important Guidelines
 
 ### Security Considerations
+
 - Never log sensitive data (IPs can be sensitive)
 - Validate all configuration inputs
 - Use secure token generation for payments
@@ -156,12 +172,14 @@ PATTERNS = {
 - Sanitize all user-provided patterns
 
 ### Performance Requirements
+
 - Detection should add <10ms overhead per request
 - Memory usage should be minimal and bounded
 - Support high-traffic sites (1000+ requests/second)
 - Lazy-load expensive operations
 
 ### Error Handling
+
 - Graceful degradation: if detection fails, allow request through
 - Clear error messages for configuration issues
 - Log errors for debugging but don't crash the application
@@ -170,13 +188,16 @@ PATTERNS = {
 ## Integration Testing
 
 ### Test with Real Applications
+
 Before any major release:
+
 1. Test with James's minimalwave-blog (Django)
 2. Create test Flask app
 3. Create test FastAPI app
 4. Verify performance with load testing
 
 ### Compatibility Testing
+
 - Python 3.8+ support
 - Major framework versions
 - Different deployment environments (Docker, cloud, etc.)
@@ -184,12 +205,14 @@ Before any major release:
 ## Documentation Standards
 
 ### Code Documentation
+
 - Docstrings for all public methods
 - Type hints for better IDE support
 - Inline comments for complex logic
 - Examples in docstrings
 
 ### User Documentation
+
 - README with quick start
 - Framework-specific guides
 - Configuration reference
@@ -198,13 +221,16 @@ Before any major release:
 ## Release Process
 
 ### Version Management
+
 - Semantic versioning (MAJOR.MINOR.PATCH)
 - Clear changelog for each release
 - Beta releases for major changes
 - LTS versions for stability
 
 ### Quality Gates
+
 Before any release:
+
 - [ ] All tests pass
 - [ ] Documentation updated
 - [ ] Performance benchmarks run
@@ -214,12 +240,14 @@ Before any release:
 ## Community Guidelines
 
 ### Contributing
+
 - Welcome pattern contributions from community
 - Require tests for new features
 - Code review for all changes
 - Clear contribution guidelines
 
 ### Support
+
 - GitHub issues for bug reports
 - Discussions for questions
 - Clear issue templates
@@ -240,6 +268,7 @@ Before any release:
 **Phase 1 Goal**: Create a working detection module that can be tested with the minimalwave-blog Django application.
 
 **Success Criteria**:
+
 - Zero-config integration with Django
 - Detects major AI bots (GPTBot, Claude-Web, CCBot)
 - Logs useful metadata for analysis

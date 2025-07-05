@@ -5,6 +5,7 @@ Thank you for your interest in contributing to AI Paywall! This project aims to 
 ## Ways to Contribute
 
 ### 1. Bot Detection Patterns
+
 Help identify new AI crawlers by submitting bot patterns:
 
 ```python
@@ -19,12 +20,15 @@ Help identify new AI crawlers by submitting bot patterns:
 ```
 
 ### 2. Framework Integrations
+
 Add support for new Python web frameworks by creating adapters.
 
 ### 3. Payment Providers
+
 Integrate new payment providers (PayPal, crypto, etc.).
 
 ### 4. Bug Reports and Features
+
 Use GitHub issues for bugs and feature requests.
 
 ## Development Setup

@@ -8,9 +8,9 @@ assignees: ''
 ---
 
 **Bot Information**
-- Bot Name: 
-- Company: 
-- Official Documentation: 
+- Bot Name:
+- Company:
+- Official Documentation:
 
 **Detection Pattern**
 ```python

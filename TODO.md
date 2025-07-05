@@ -24,7 +24,7 @@
 
 ### Framework Adapters
 - [ ] Django request adapter
-- [ ] Flask request adapter  
+- [ ] Flask request adapter
 - [ ] FastAPI request adapter
 - [ ] Generic WSGI/ASGI adapter
 

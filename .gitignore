@@ -69,8 +69,10 @@ logs/
 *.old
 *~
 
-# Claude's sandbox directory for troubleshooting
+# Claude's crap
 .claude-sandbox/
+CLAUDE.md
+
 
 # Downloaded files and debugging artifacts
 downloads/
